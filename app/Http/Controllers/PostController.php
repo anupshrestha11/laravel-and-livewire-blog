@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('dashboard.pages.posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -24,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pages.posts.create.index');
     }
 
     /**
@@ -35,7 +37,32 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title'          => 'required|max:255',
+            'slug'           => 'required|unique:posts|max:255',
+            'excerpt'        => 'required',
+            'featured_image' => 'required|image',
+            'content'        => 'required',
+        ]);
+
+        if ($request->status == null) {
+            $request['published_at'] = Carbon::now()->toDateTimeString();
+        }
+
+        $filename = $request->file('featured_image')->getClientOriginalName();
+
+// $request->file('featured_image')->store('post', $filename, 'public');
+        $path = $request->file('featured_image')->storeAs(
+            'public/featured_image', $filename
+        );
+
+        $request['featured_image_path'] = "featured_image/" . $filename;
+
+        $post = Post::create($request->all());
+
+        session()->flash('msg', 'Post added successfully.');
+        return redirect(route('dashboard.posts.index'));
+
     }
 
     /**
