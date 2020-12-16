@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@300;400;600;700;800&display=swap");
+
+$breakpoint-sm: 600px;
+$breakpoint-md1: 767px;
+$breakpoint-md2: 992px;
+$breakpoint-xl: 1200px;
+
+.container {
+    max-width: 1200px !important;
+}
+
+.navbar-brand {
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.1rem;
+    font-weight: bolder !important;
+}
+
+.search-form {
+    * {
+        transition: all 0.3s ease;
+    }
+    &:focus-within {
+        border-color: #777e8b8f !important;
+        button {
+            border-left: 1px solid #777e8b8f;
+        }
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex: wrap;
+    min-height: 100vh;
+    // background: #2f363f !important;
+    // * {
+    //     background: #2f363f !important;
+    //     color: #fff !important;
+    //     fill: #fff;
+    //     border-color: #fff !important;
+    // }
+
+    .footer {
+        margin-top: auto;
+    }
+}
+
+.nav-item {
+    position: relative;
+    &.active {
+        .nav-link {
+            color: rgb(15, 151, 72) !important;
+        }
+        font-weight: bold !important;
+    }
+}
+.list-group-item.list-group-item-action.active {
+    background-color: rgb(15, 151, 72) !important;
+}
+
+@media screen and (min-width: $breakpoint-md1) {
+    .nav-item {
+        position: relative;
+        &.active {
+            .nav-link {
+                color: rgb(15, 151, 72) !important;
+            }
+            font-weight: bold !important;
+            &::before {
+                content: "";
+                background: rgb(15, 151, 72);
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                clip-path: polygon(0 0, 100% 0, 50% 100%);
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-md1) {
+    .navbar-nav {
+        display: flex !important;
+        justify-content: space-around !important;
+        flex-flow: row !important;
+        width: 100% !important;
+        li {
+            display: inline-block !important;
+            text-align: unset !important;
+            display: inline !important;
+        }
+        .nav-item {
+            width: fit-content !important;
+        }
+        .nav-link {
+            padding: 5px 10px;
+        }
+    }
+    .navbar-brand {
+        margin: 0 auto;
+    }
+}

@@ -25,7 +25,8 @@
     <td>{{$post->comment_count}}</td>
     <td class="p-0">
         <div class="d-flex">
-            <a class="btn btn-info btn-rounded btn-icon m-1 d-flex align-items-center flex-wrap justify-content-center"
+            <a href="{{ route('dashboard.posts.show', ['post'=> $post->id]) }}" target="_blank"
+                class="btn btn-info btn-rounded btn-icon m-1 d-flex align-items-center flex-wrap justify-content-center"
                 type="button">
                 <i class="ti-eye text-white"></i>
             </a>

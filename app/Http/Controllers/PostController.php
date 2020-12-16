@@ -73,7 +73,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return "<img src='/storage/$post->featured_image_path' width='400px'/>";
     }
 
     /**

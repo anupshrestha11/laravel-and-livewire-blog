@@ -13,7 +13,7 @@
     <tbody>
         @forelse ($posts as $post)
 
-        <x-postrow :post='$post' :key='$post->id' />
+        <x-post-row :post='$post' :key='$post->id' />
 
         @empty
         <tr>

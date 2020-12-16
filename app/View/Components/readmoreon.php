@@ -4,17 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class postrow extends Component
+class readmoreon extends Component
 {
-    public $post;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($post)
+    public function __construct()
     {
-        $this->post = $post;
+        //
     }
 
     /**
@@ -24,6 +23,6 @@ class postrow extends Component
      */
     public function render()
     {
-        return view('components.post-row');
+        return view('components.readmoreon');
     }
 }

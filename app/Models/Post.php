@@ -16,5 +16,7 @@ class Post extends Model
         'type',
         'comment_count',
         'published_at',
+        'views',
     ];
+
 }
